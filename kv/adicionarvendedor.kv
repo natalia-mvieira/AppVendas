@@ -1,0 +1,50 @@
+<AdicionarVendedorPage>
+    FloatLayout:
+        canvas:
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: "AplicativoVendas/icones/bg1.png"
+        Label:
+            pos_hint: {"right": 0.9, "top": 0.8}
+            size_hint: 0.8, 0.1
+            bold: True
+            text: "Insira o [color=#00CFDB]ID de outro vendedor[/color] para acompanhá-lo:"
+            markup: True
+        LabelButton:
+            canvas.before:
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+                    source: "AplicativoVendas/icones/botao.png" if self.state == "normal" else "AplicativoVendas/icones/botao_apertado.png"
+            on_release: app.adicionar_vendedor(id_outro_vendedor_input.text)
+            text: "Adicionar Vendedor"
+            pos_hint: {"right": 0.9, "top": 0.55}
+            size_hint: 0.8, 0.2
+        TextInput:
+            pos_hint: {"right": 0.9, "top": 0.7}
+            size_hint: 0.8, 0.1
+            id: id_outro_vendedor_input
+        Label:
+            pos_hint: {"right": 0.9, "top": 0.4}
+            size_hint: 0.8, 0.1
+            bold: True
+            text: ""
+            markup: True
+            id: mensagem_outro_vendedor
+
+        #botao voltar
+        FloatLayout:
+            pos_hint: {"right": 1, "top": 0.12}
+            size_hint: 1, 0.12
+            canvas:
+                Color:
+                    rgb: utils.get_color_from_hex("#006D7E")
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            ImageButton:
+                pos_hint: {"right": 0.2, "top": 0.9}
+                size_hint: 0.2, 0.8
+                source: "AplicativoVendas/icones/voltar.png"
+                on_release: app.mudar_tela("homepage")

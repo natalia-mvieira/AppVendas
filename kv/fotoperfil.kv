@@ -1,0 +1,39 @@
+<FotoPerfilPage>
+    FloatLayout:
+        canvas:
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: "AplicativoVendas/icones/bg1.png"
+        Label:
+            pos_hint: {"right": 0.85, "top": 0.95}
+            size_hint: 0.7, 0.1
+            bold: True
+            text: "Selecione Uma Foto de Perfil"
+        ScrollView:
+            pos_hint: {"right": 0.9, "top": 0.85}
+            size_hint: 0.8, 0.73
+            GridLayout:
+                cols: 3
+                id: lista_fotos_perfil
+                spacing: 5,5
+                size_hint_y: None #se o banner fosse vertical, onde é y seria x
+                height: self.minimum_height #se o banner fosse vertical, onde é height seria widht
+                row_default_height: '90dp' # 90 dp é o tamanho do banner. se o banner fosse vertical, onde é row seria column
+                row_force_default: True
+
+        #botao voltar
+        FloatLayout:
+            pos_hint: {"right": 1, "top": 0.12}
+            size_hint: 1, 0.12
+            canvas:
+                Color:
+                    rgb: utils.get_color_from_hex("#006D7E")
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            ImageButton:
+                pos_hint: {"right": 0.2, "top": 0.9}
+                size_hint: 0.2, 0.8
+                source: "AplicativoVendas/icones/voltar.png"
+                on_release: app.mudar_tela("homepage")
